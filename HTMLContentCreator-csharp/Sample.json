@@ -1,0 +1,26 @@
+{
+  "en-us": {
+    "page-title": "Hello world",
+    "page-header": "Hello world",
+    "page-body": "This is the page body",
+    "page-footer": "This is the page footer"
+  },
+  "es-us": {
+    "page-title": "Hola mundo",
+    "page-header": "Hola mundo",
+    "page-body": "Este es el cuerpo de la página",
+    "page-footer": "Este es el pie de página"
+  },
+  "en-ca": {
+    "page-title": "Hello world",
+    "page-header": "Hello world",
+    "page-body": "This is the page body",
+    "page-footer": "This is the page footer"
+  },
+  "fr-ca": {
+    "page-title": "Bonjour le monde",
+    "page-header": "Bonjour le monde",
+    "page-body": "Ceci est le corps de la page",
+    "page-footer": "Ceci est la page footer"
+  }
+}
