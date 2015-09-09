@@ -74,7 +74,6 @@
     <Compile Include="Classes\ContentFormatPlugin.cs" />
     <Compile Include="Classes\ContentFormatPluginFactory.cs" />
     <Compile Include="Classes\ContentPieces.cs" />
-    <Compile Include="Classes\IEnumerableExtensions.cs" />
     <Compile Include="Classes\JSONEnumerableFactory.cs" />
     <Compile Include="Classes\JSONPlugin.cs" />
     <Compile Include="Classes\TemplateWriter.cs" />
