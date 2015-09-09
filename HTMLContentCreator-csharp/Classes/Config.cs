@@ -18,9 +18,9 @@ namespace HTMLContentCreator_csharp
         {
             try
             {
-                if (File.Exists(Path.Combine(currentWorkingDirectory, @"..\..\", this.configFile)))
+                if (File.Exists(Path.Combine(currentWorkingDirectory, configFile)))
                 {
-                    using (StreamReader reader = new StreamReader(Path.Combine(currentWorkingDirectory, @"..\..\", configFile)))
+                    using (StreamReader reader = new StreamReader(Path.Combine(currentWorkingDirectory, configFile)))
                     {
                         this.config = JObject.Parse(reader.ReadToEnd());
                     }
@@ -33,7 +33,7 @@ namespace HTMLContentCreator_csharp
                         {
                             sw.WriteLine("{");
                             sw.WriteLine("\t\"files\": [");
-                            sw.WriteLine("\t\t\"" + currentWorkingDirectory + this.sampleXlsx + "\"");
+                            sw.WriteLine("\t\t\"" + currentWorkingDirectory + sampleXlsx + "\"");
                             sw.WriteLine("\t]");
                             sw.WriteLine("}");
                             sw.Flush();

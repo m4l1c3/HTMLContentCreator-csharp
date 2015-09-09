@@ -19,24 +19,24 @@ namespace HTMLContentCreator_csharp
         }
         public void writeTemplates(IContentFormat contentFormatplugin)
         {
-            if(contentFormatplugin.cmsBlocks.Count() > 0)
+            if(contentFormatplugin.cmsBlockFactory.cmsBlocks.Count() > 0)
             {
-                foreach(CMSBlock currentCMSBlock in contentFormatplugin.cmsBlocks)
+                foreach(CMSBlock currentCMSBlock in contentFormatplugin.cmsBlockFactory.cmsBlocks)
                 {
                     this.htmlTemplatePath = Path.Combine(contentFormatplugin.currentWorkingDirectory
-                        ) + @"\..\..\" + currentCMSBlock.Name + this.templateSuffix + this.templateExtension;
+                        ) + currentCMSBlock.Name + templateSuffix + templateExtension;
 
                     try
                     {
-                        string currentTemplate = File.ReadAllText(this.htmlTemplatePath);
+                        string currentTemplate = File.ReadAllText(htmlTemplatePath);
                         foreach(ContentPieces currentContentPiece in currentCMSBlock.Language.ContentPieces)
                         {
                             currentTemplate = currentTemplate.Replace("%%" + currentContentPiece.SectionName + "%%", 
                                 currentContentPiece.SectionContent);
                         }
                         currentTemplate = currentTemplate.Replace("%%language-code%%", currentCMSBlock.Language.Name);
-                        string destinationFile = Path.Combine(contentFormatplugin.currentWorkingDirectory) + @"\..\..\" + currentCMSBlock.Language.Name +
-                            "-" + currentCMSBlock.Name + this.templateExtension;
+                        string destinationFile = Path.Combine(contentFormatplugin.currentWorkingDirectory) + currentCMSBlock.Language.Name +
+                            "-" + currentCMSBlock.Name + templateExtension;
                         File.WriteAllText(destinationFile, currentTemplate);
 
                     } catch(Exception exception)

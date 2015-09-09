@@ -68,17 +68,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\CMSBlock.cs" />
+    <Compile Include="Classes\CMSBlockProcessor.cs" />
     <Compile Include="Classes\CMSLanguage.cs" />
     <Compile Include="Classes\Config.cs" />
     <Compile Include="Classes\ContentFormat.cs" />
-    <Compile Include="Classes\ContentFormatPlugin.cs" />
+    <Compile Include="Classes\CMSBlockFactory.cs" />
     <Compile Include="Classes\ContentFormatPluginFactory.cs" />
     <Compile Include="Classes\ContentPieces.cs" />
     <Compile Include="Classes\JSONEnumerableFactory.cs" />
-    <Compile Include="Classes\JSONPlugin.cs" />
+    <Compile Include="Classes\Plugins\JSONPlugin.cs" />
     <Compile Include="Classes\TemplateWriter.cs" />
-    <Compile Include="Classes\XLSXPlugin.cs" />
-    <Compile Include="Classes\XMLPlugin.cs" />
+    <Compile Include="Classes\Plugins\XLSXPlugin.cs" />
+    <Compile Include="Classes\Plugins\XMLPlugin.cs" />
+    <Compile Include="Interfaces\ICMSBlockProcessor.cs" />
+    <Compile Include="Interfaces\ICMSDataParser.cs" />
     <Compile Include="Interfaces\IContentFormat.cs" />
     <Compile Include="Interfaces\IJSONIterator.cs" />
     <Compile Include="Interfaces\ITemplateProcessor.cs" />

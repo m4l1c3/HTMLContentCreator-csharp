@@ -1,6 +1,5 @@
 {
 	"files": [
-		"Sample.xlsx",
-		"Test.xlsx"
+		"Sample.xlsx"
 	]
 }

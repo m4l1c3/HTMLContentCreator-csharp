@@ -8,19 +8,20 @@ using System.Threading.Tasks;
 
 namespace HTMLContentCreator_csharp
 {
-    class ContentFormatPlugin
+    class CMSBlockFactory : ICMSDataParser
     {
-        public int currentRow = 0;
-        public int currentColumn = 0;
-        public ContentFormat contentFormat;
-        public FileStream fileInput;
-        public string currentFile;
-        public string currentWorkingDirectory;
-        public string currentPageName;
-        public List<CMSLanguage> languages = new List<CMSLanguage>();
-        public List<CMSBlock> cmsBlocks = new List<CMSBlock>();
+        public string currentPageName { get; set; }
+        public List<CMSLanguage> languages { get; set; }
+        public List<CMSBlock> cmsBlocks { get; set; }
 
-        public void getCMSBlocks()
+        public CMSBlockFactory(string currentPageName)
+        {
+            this.currentPageName = currentPageName;
+            this.languages = new List<CMSLanguage>();
+            this.cmsBlocks = new List<CMSBlock>();
+        }
+
+        public List<CMSBlock> getCMSBlocks()
         {
             if (this.languages.Count() > 0)
             {
@@ -30,6 +31,8 @@ namespace HTMLContentCreator_csharp
                     this.cmsBlocks.Add(cmsBlock);
                 }
             }
+
+            return this.cmsBlocks;
         }
     }
 }

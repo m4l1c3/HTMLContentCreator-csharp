@@ -12,11 +12,11 @@ namespace HTMLContentCreator_csharp
         string currentFile { get; set; }
         string currentWorkingDirectory { get; set; }
         string currentPageName { get; set; }
-        List<CMSLanguage> languages { get; set; }
-        List<CMSBlock> cmsBlocks {  get; set; }
-        void getLanguages(IEnumerable enumerable);
+        //List<CMSLanguage> languages { get; set; }
+        //List<CMSBlock> cmsBlocks {  get; set; }
+        ICMSDataParser cmsBlockFactory { get; set; }
 
-        void getCMSBlocks();
+        void getLanguages(IEnumerable enumerable);
 
         void processDataRows();
 
