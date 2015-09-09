@@ -10,21 +10,44 @@ using System.IO;
 
 namespace HTMLContentCreator_csharp
 {
-    class XLSXPlugin : ContentFormatPlugin, IContentFormat
+    class XLSXPlugin : IContentFormat
     {
         private XSSFWorkbook workBook;
         private ISheet sheet;
-        
+        public string CurrentPageSection { get; set; }
+        public ContentFormat contentFormat { get; set; }
+        public string currentFile { get; set; }
+        public FileStream fileInput { get; set; }
+        public string currentPageName { get; set; }
+        public string currentWorkingDirectory { get; set; }
+        public List<CMSLanguage> languages { get; set; }
+        public List<CMSBlock> cmsBlocks { get; set; }
+
         public XLSXPlugin(string contentFormat, string contentEncoding, string currentFile, string currentWorkingDirectory)
         {
+        
             this.contentFormat = new ContentFormat(contentFormat, contentEncoding);
             this.currentFile = currentFile;
-            this.fileInput = new FileStream(Path.Combine(currentWorkingDirectory, @"..\..\", this.currentFile), FileMode.Open, FileAccess.Read);
-            this.workBook = new XSSFWorkbook(this.fileInput);
-            this.currentPageName = currentFile.Substring(this.currentFile.LastIndexOf("/") + 1, this.currentFile.LastIndexOf("."));
+            fileInput = new FileStream(Path.Combine(currentWorkingDirectory, @"..\..\", this.currentFile), FileMode.Open, FileAccess.Read);
+            workBook = new XSSFWorkbook(this.fileInput);
+            currentPageName = currentFile.Substring(this.currentFile.LastIndexOf("/") + 1, this.currentFile.LastIndexOf("."));
             this.currentWorkingDirectory = currentWorkingDirectory;
-            this.sheet = this.workBook.GetSheet("Sheet1");
+            sheet = workBook.GetSheet("Sheet1");
+            languages = new List<CMSLanguage>();
+            cmsBlocks = new List<CMSBlock>();
             processDataRows();
+        }
+
+        public void getCMSBlocks()
+        {
+            if (this.languages.Count() > 0)
+            {
+                foreach (CMSLanguage currentLanguage in this.languages)
+                {
+                    CMSBlock cmsBlock = new CMSBlock(this.currentPageName, currentLanguage);
+                    this.cmsBlocks.Add(cmsBlock);
+                }
+            }
         }
 
         public void processDataRows()

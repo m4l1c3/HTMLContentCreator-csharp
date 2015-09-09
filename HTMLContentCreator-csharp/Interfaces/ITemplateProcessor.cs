@@ -8,6 +8,6 @@ namespace HTMLContentCreator_csharp
 {
     interface ITemplateProcessor
     {
-        void writeTemplates(ContentFormatPlugin plugin);
+        void writeTemplates(IContentFormat plugin);
     }
 }

@@ -26,7 +26,7 @@ namespace HTMLContentCreator_csharp
                 {
                     string currentFile = file.ToString();
                     ContentFormatPluginFactory contentFormatPluginFactory = new ContentFormatPluginFactory();
-                    ContentFormatPlugin data = contentFormatPluginFactory.getContentFormat(currentFile.Substring(currentFile.LastIndexOf(".") + 1).ToUpper(),
+                    IContentFormat data = contentFormatPluginFactory.getContentFormat(currentFile.Substring(currentFile.LastIndexOf(".") + 1).ToUpper(),
                         currentFile, currentWorkingDirectory);
                     TemplateWriter writer = new TemplateWriter();
                     writer.writeTemplates(data);

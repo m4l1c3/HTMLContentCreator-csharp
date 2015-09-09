@@ -17,7 +17,7 @@ namespace HTMLContentCreator_csharp
         {
 
         }
-        public void writeTemplates(ContentFormatPlugin contentFormatplugin)
+        public void writeTemplates(IContentFormat contentFormatplugin)
         {
             if(contentFormatplugin.cmsBlocks.Count() > 0)
             {
