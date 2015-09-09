@@ -14,31 +14,17 @@ namespace HTMLContentCreator_csharp
     {
         private XSSFWorkbook workBook;
         private ISheet sheet;
-        //private FormulaEvaluator evaluator;
-        //private DataFormatter dataFormatter = new DataFormatter();
-
-
+        
         public XLSXPlugin(string contentFormat, string contentEncoding, string currentFile, string currentWorkingDirectory)
         {
             this.contentFormat = new ContentFormat(contentFormat, contentEncoding);
-            this.fileInput = new FileStream(Path.Combine(currentWorkingDirectory, @"..\..\", currentFile), FileMode.Open, FileAccess.Read);
+            this.currentFile = currentFile;
+            this.fileInput = new FileStream(Path.Combine(currentWorkingDirectory, @"..\..\", this.currentFile), FileMode.Open, FileAccess.Read);
             this.workBook = new XSSFWorkbook(this.fileInput);
-            this.currentPageName = currentFile.Substring(currentFile.LastIndexOf("/") + 1, currentFile.LastIndexOf("."));
+            this.currentPageName = currentFile.Substring(this.currentFile.LastIndexOf("/") + 1, this.currentFile.LastIndexOf("."));
             this.currentWorkingDirectory = currentWorkingDirectory;
             this.sheet = this.workBook.GetSheet("Sheet1");
-            this.processDataRows();
-        }
-
-        public void getCMSBlocks()
-        {
-            if (this.languages.Count() > 0)
-            {
-                foreach(CMSLanguage currentLanguage in this.languages)
-                {
-                    CMSBlock cmsBlock = new CMSBlock(this.currentPageName, currentLanguage);
-                    this.cmsBlocks.Add(cmsBlock);
-                }
-            }
+            processDataRows();
         }
 
         public void processDataRows()
@@ -78,10 +64,6 @@ namespace HTMLContentCreator_csharp
                     i++;
                 }
             }
-            else
-            {
-                throw new NotImplementedException();
-            }
         }
 
         public void processDataCells(IEnumerable enumerable)
@@ -104,10 +86,6 @@ namespace HTMLContentCreator_csharp
                     i++;
                 }
 
-            }
-            else
-            {
-                throw new NotImplementedException();
             }
         }
     }

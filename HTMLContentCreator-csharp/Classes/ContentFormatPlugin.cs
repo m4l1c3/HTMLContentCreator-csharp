@@ -14,14 +14,22 @@ namespace HTMLContentCreator_csharp
         public int currentColumn = 0;
         public ContentFormat contentFormat;
         public FileStream fileInput;
-        //FileInputStream fileInputStream;
         public string currentFile;
         public string currentWorkingDirectory;
         public string currentPageName;
-        public IEnumerable rowEnumerator;
         public List<CMSLanguage> languages = new List<CMSLanguage>();
         public List<CMSBlock> cmsBlocks = new List<CMSBlock>();
 
-        
+        public void getCMSBlocks()
+        {
+            if (this.languages.Count() > 0)
+            {
+                foreach (CMSLanguage currentLanguage in this.languages)
+                {
+                    CMSBlock cmsBlock = new CMSBlock(this.currentPageName, currentLanguage);
+                    this.cmsBlocks.Add(cmsBlock);
+                }
+            }
+        }
     }
 }
