@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json.Linq;
 
 namespace HTMLContentCreator_csharp
 {
     interface IConfig
     {
+        string configFile { get; set; }
+        string sampleXlsx { get; set; }
+        JObject config { get; set; }
     }
 }

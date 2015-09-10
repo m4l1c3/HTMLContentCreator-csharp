@@ -88,7 +88,7 @@
     <Compile Include="Interfaces\IContentFormat.cs" />
     <Compile Include="Interfaces\IContentPieces.cs" />
     <Compile Include="Interfaces\IContentType.cs" />
-    <Compile Include="Interfaces\IJSONIterator.cs" />
+    <Compile Include="Interfaces\IJSONEnumerable.cs" />
     <Compile Include="Interfaces\ITemplateProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

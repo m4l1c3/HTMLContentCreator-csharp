@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
 namespace HTMLContentCreator_csharp
 {
@@ -12,11 +9,10 @@ namespace HTMLContentCreator_csharp
         static void Main(string[] args)
         {
             string currentWorkingDirectory = Directory.GetCurrentDirectory() + @"\..\..\";
-            Config config = new Config(currentWorkingDirectory);
-            JSONEnumerableFactory jsonEnumerableFactory = new JSONEnumerableFactory(config.config, "files");
-            IEnumerable<Newtonsoft.Json.Linq.JToken> jsonEnumerable = jsonEnumerableFactory.getEnumerable();            
+            IConfig config = new Config(currentWorkingDirectory);
+            IJSONEnumerable jsonEnumerableFactory = new JSONEnumerableFactory(config.config, "files");
+            IEnumerable<JToken> jsonEnumerable = jsonEnumerableFactory.getEnumerable();            
             ICMSBlockProcessor dataProcessor = new CMSBlockProcessor(currentWorkingDirectory, jsonEnumerable);
-            //Console.ReadLine();
         }
     }
 }

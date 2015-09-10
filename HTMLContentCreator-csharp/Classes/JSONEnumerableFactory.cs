@@ -1,14 +1,11 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HTMLContentCreator_csharp
 {
-    class JSONEnumerableFactory : IJSONIterator
+    class JSONEnumerableFactory : IJSONEnumerable
     {
         JToken jsonObject;
         
