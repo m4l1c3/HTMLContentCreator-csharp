@@ -17,7 +17,7 @@ namespace HTMLContentCreator_csharp
         public Config(string currentWorkingDirectory)
         {
             configFile = "ContentconfigJSON.txt";
-            sampleXlsx = "Sample.xlsx";
+            sampleXlsx = "Sample.json";
 
             try
             {
