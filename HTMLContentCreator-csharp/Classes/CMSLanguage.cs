@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HTMLContentCreator_csharp
 {
-    class CMSLanguage
+    class CMSLanguage : ICMSLanguage
     {
-        public string Name;
-        public List<ContentPieces> ContentPieces;
+        public string Name { get; set; }
+        public List<ContentPieces> ContentPieces { get; set; }
 
         public CMSLanguage(string name)
         {

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HTMLContentCreator_csharp
 {
-    class ContentPieces
+    class ContentPieces : IContentPieces
     {
-        public string SectionName;
-        public string SectionContent;
+        public string SectionName { get; set; }
+        public string SectionContent { get; set; }
 
         public ContentPieces(string sectionName, string sectionContent)
         {

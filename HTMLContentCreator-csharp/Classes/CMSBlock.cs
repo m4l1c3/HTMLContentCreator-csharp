@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace HTMLContentCreator_csharp
 {
-    class CMSBlock
+    class CMSBlock : ICMSBlock
     {
-        public string Name;
-        public CMSLanguage Language;
+        public string Name { get; set; }
+        
+        public CMSLanguage Language { get; set; }
 
         public CMSBlock(string name, CMSLanguage language)
         {

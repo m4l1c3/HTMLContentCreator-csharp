@@ -8,14 +8,17 @@ using System.Threading.Tasks;
 
 namespace HTMLContentCreator_csharp
 {
-    class Config
+    class Config : IConfig
     {
-        public string configFile = "ContentConfigJSON.txt";
-        public string sampleXlsx = "Sample.xlsx";
-        public JObject config;
+        public string configFile { get; set; }
+        public string sampleXlsx { get; set; }
+        public JObject config { get; set; }
 
         public Config(string currentWorkingDirectory)
         {
+            configFile = "ContentconfigJSON.txt";
+            sampleXlsx = "Sample.xlsx";
+
             try
             {
                 if (File.Exists(Path.Combine(currentWorkingDirectory, configFile)))

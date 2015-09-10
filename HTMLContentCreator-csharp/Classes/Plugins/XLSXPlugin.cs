@@ -11,7 +11,7 @@ namespace HTMLContentCreator_csharp
         private XSSFWorkbook workBook;
         private ISheet sheet;
         public string CurrentPageSection { get; set; }
-        public ContentFormat contentFormat { get; set; }
+        public IContentType contentFormat { get; set; }
         public string currentFile { get; set; }
         public FileStream fileInput { get; set; }
         public string currentPageName { get; set; }
@@ -20,7 +20,7 @@ namespace HTMLContentCreator_csharp
         public XLSXPlugin(string contentFormat, string contentEncoding, string currentFile, string currentWorkingDirectory)
         {
         
-            this.contentFormat = new ContentFormat(contentFormat, contentEncoding);
+            this.contentFormat = new ContentType(contentFormat, contentEncoding);
             this.currentFile = currentFile;
             fileInput = new FileStream(Path.Combine(currentWorkingDirectory, this.currentFile), FileMode.Open, FileAccess.Read);
             workBook = new XSSFWorkbook(this.fileInput);

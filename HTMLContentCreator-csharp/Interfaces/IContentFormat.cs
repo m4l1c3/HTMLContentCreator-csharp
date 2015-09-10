@@ -7,7 +7,7 @@ namespace HTMLContentCreator_csharp
 {
     interface IContentFormat
     {
-        ContentFormat contentFormat { get; set; }
+        IContentType contentFormat { get; set; }
         FileStream fileInput { get; set; }
         string currentFile { get; set; }
         string currentWorkingDirectory { get; set; }

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace HTMLContentCreator_csharp
 {
-    class ContentFormat
+    class ContentType : IContentType
     {
-        private string format;
-        private string outputType;
+        public string format { get; set; }
+        public string outputType { get; set; }
 
-        public ContentFormat(string format, string outputType)
+        public ContentType(string format, string outputType)
         {
             this.format = format;
             this.outputType = outputType;

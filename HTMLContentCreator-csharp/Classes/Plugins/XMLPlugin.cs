@@ -12,7 +12,7 @@ namespace HTMLContentCreator_csharp
     class XMLPlugin : IContentFormat
     {
         public string CurrentPageSection { get; set; }
-        public ContentFormat contentFormat { get; set; }
+        public IContentType contentFormat { get; set; }
         public string currentFile { get; set; }
         public FileStream fileInput { get; set; }
         public string currentPageName { get; set; }
@@ -24,7 +24,7 @@ namespace HTMLContentCreator_csharp
 
         public XMLPlugin(string contentFormat, string contentEncoding, string currentFile, string currentWorkingDirectory)
         {
-            this.contentFormat = new ContentFormat(contentFormat, contentEncoding);
+            this.contentFormat = new ContentType(contentFormat, contentEncoding);
             this.currentFile = currentFile;
             fileInput = new FileStream(Path.Combine(currentWorkingDirectory, this.currentFile), FileMode.Open, FileAccess.Read);
             currentPageName = currentFile.Substring(this.currentFile.LastIndexOf("/") + 1, this.currentFile.LastIndexOf("."));
