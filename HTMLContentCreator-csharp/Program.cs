@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json.Linq;
 
@@ -13,6 +14,7 @@ namespace HTMLContentCreator_csharp
             IJSONEnumerable jsonEnumerableFactory = new JSONEnumerableFactory(config.config, "files");
             IEnumerable<JToken> jsonEnumerable = jsonEnumerableFactory.getEnumerable();            
             ICMSBlockProcessor dataProcessor = new CMSBlockProcessor(currentWorkingDirectory, jsonEnumerable);
+            //Console.ReadKey();
         }
     }
 }
