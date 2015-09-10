@@ -58,14 +58,20 @@ namespace HTMLContentCreator_csharp
         {
             if (enumerable != null)
             {
-                int i = 0;
-                foreach (XSSFCell cell in enumerable)
-                {
-                    if(i > 0)
+                try {
+                    int i = 0;
+                    foreach (XSSFCell cell in enumerable)
                     {
-                        cmsBlockFactory.languages.Add(new CMSLanguage(cell.StringCellValue));
+                        if (i > 0)
+                        {
+                            cmsBlockFactory.languages.Add(new CMSLanguage(cell.StringCellValue));
+                        }
+                        i++;
                     }
-                    i++;
+                }
+                catch(Exception exception)
+                {
+                    Console.WriteLine(exception.ToString());
                 }
             }
         }
@@ -74,22 +80,28 @@ namespace HTMLContentCreator_csharp
         {
             if (enumerable != null)
             {
-                int i = 0;
-                string placeholder = "";
-                foreach (XSSFCell cell in enumerable)
+                try
                 {
-                    if (i > 0)
+                    int i = 0;
+                    string placeholder = "";
+                    foreach (XSSFCell cell in enumerable)
                     {
-                        CMSLanguage currentLanguage = cmsBlockFactory.languages[i - 1];
-                        currentLanguage.ContentPieces.Add(new ContentPieces(placeholder, cell.StringCellValue));
+                        if (i > 0)
+                        {
+                            CMSLanguage currentLanguage = cmsBlockFactory.languages[i - 1];
+                            currentLanguage.ContentPieces.Add(new ContentPieces(placeholder, cell.StringCellValue));
+                        }
+                        else
+                        {
+                            placeholder = cell.StringCellValue;
+                        }
+                        i++;
                     }
-                    else
-                    {
-                        placeholder = cell.StringCellValue;
-                    }
-                    i++;
                 }
-
+                catch(Exception exception)
+                {
+                    Console.WriteLine(exception.ToString());
+                }
             }
         }
     }
