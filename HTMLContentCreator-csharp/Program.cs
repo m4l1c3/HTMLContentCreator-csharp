@@ -9,12 +9,20 @@ namespace HTMLContentCreator_csharp
     {
         static void Main(string[] args)
         {
-            string currentWorkingDirectory = Directory.GetCurrentDirectory() + @"\..\..\";
+            string currentWorkingDirectory = Directory.GetCurrentDirectory();
+            if (currentWorkingDirectory.IndexOf("bin") > 0)
+            {
+                currentWorkingDirectory += @"\..\..\";
+            }
+            else
+            {
+                currentWorkingDirectory += @"\";
+            }
             IConfig config = new Config(currentWorkingDirectory);
             IJSONEnumerable jsonEnumerableFactory = new JSONEnumerableFactory(config.config, "files");
             IEnumerable<JToken> jsonEnumerable = jsonEnumerableFactory.getEnumerable();            
             ICMSBlockProcessor dataProcessor = new CMSBlockProcessor(currentWorkingDirectory, jsonEnumerable);
-            //Console.ReadKey();
+            Console.ReadKey();
         }
     }
 }
